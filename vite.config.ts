@@ -7,9 +7,10 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "lib/index.ts"),
-      name: "mexc-to-cointracker",
-      fileName: "mexc-to-cointracker",
+      entry: [
+        resolve(__dirname, "lib/index.ts"),
+        resolve(__dirname, "lib/cli.ts"),
+      ],
     },
   },
   plugins: [dts()],
