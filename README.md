@@ -1,73 +1,79 @@
-# MEXC to Cointracker CSV Transformer
+# MEXC to Cointracker CSV Converter
 
-## Overview
-
-[MEXC Global](https://www.mexc.com/) is a centralized cryptocurrency exchange platform where users can trade various cryptocurrencies. For tax reporting purposes, users often need to export their trade history. [Cointracker](https://www.cointracker.io/home) is a cryptocurrency tax software that simplifies tax reporting by automating the calculation of taxes based on users' transaction histories. This project bridges the gap between [MEXC Global](https://www.mexc.com/) and [Cointracker](https://www.cointracker.io/home) by providing a tool that transforms CSV exports from MEXC into a [ format ](https://support.cointracker.io/hc/en-us/articles/4413071299729-Importing-Transaction-Histories-to-CoinTracker-Using-CSVs) compatible with [Cointracker](https://www.cointracker.io/home), enabling seamless import and tax calculations.
+A versatile Node.js library and command-line tool for transforming CSV data from [MEXC Global](https://www.mexc.com/) format to a [format compatible](https://support.cointracker.io/hc/en-us/articles/4413071299729-Importing-Transaction-Histories-to-CoinTracker-Using-CSVs) with Cointracker. This tool facilitates the import of cryptocurrency transaction data into Cointracker for tax calculation purposes.
 
 ## Features
 
-- CSV Transformation: Converts transaction records from MEXC CSV format to [Cointracker](https://www.cointracker.io/home) CSV format.
-- Automated Directory Management: Automatically creates output directories if they don't exist.
-- Timestamped Output Files: Names output files with timestamps to ensure uniqueness and easy identification.
+- Convert MEXC CSV exports into Cointracker-compatible CSV files.
+- Can be used programmatically in Node.js projects or as a standalone command-line tool.
+- Automated output directory creation and timestamped output files for easy organization.
 
-## Getting Started
+## Installation
 
-### Prerequisites
+### As a Node.js Library
 
-- This project was created using `bun init` in bun v1.0.7. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-- `yarn` or `npm` should still work
+Install the library in your project using npm:
 
-### Installation
+```bash
+npm install mexc-to-cointracker-csv-converter
+```
 
-1. Clone the Repository
-    
-    ```bash
-    git clone <repository-url>
-    ```
-    
-    Replace `<repository-url>` with the URL of the GitHub repository.
-    
-2. Navigate to Project Directory
-    
-    ```bash
-    cd path/to/project
-    ```
-    
-3. Install Dependencies
-    
-    ```bash
-    bun install
-    ```
-    
+Or using bun:
 
-### Usage Instructions
+```bash
+bun add mexc-to-cointracker-csv-converter
+```
 
-1. Prepare Your CSV File
-    
-    Export your transaction history from [MEXC Global](https://www.mexc.com/) as a CSV file.
-    
-2. Run the Transformer
-    
-    Execute the transformation script using Bun with the following command:
-    
-    ```bash
-    bun run index.ts <inputFilePath> <outputDirectory>
-    ```
-    
-    - `<inputFilePath>`: Path to the MEXC CSV file.
-    - `<outputDirectory>`: Destination directory for the transformed [ Cointracker-compatible ](https://support.cointracker.io/hc/en-us/articles/4413071299729-Importing-Transaction-Histories-to-CoinTracker-Using-CSVs) CSV file.
-    
-    Example:
-    
-    ```bash
-    bun run index.ts ./data/mexc_transactions.csv ./output
-    ```
-    
+### As a Command-Line Tool
 
-### How It Works
+To use it as a global command-line tool, install it globally:
 
-The `index.ts` script initiates the transformation process, which involves reading the MEXC transaction records, converting them into the [Cointracker](https://www.cointracker.io/home) format, and outputting the result to a new CSV file. This process facilitates the easy import of transaction data into [Cointracker](https://www.cointracker.io/home) for accurate tax calculations.
+```bash
+npm install -g mexc-to-cointracker-csv-converter
+```
 
-### Contributing
+Or with bun:
 
-Your contributions are welcome! Whether it's improving the transformation logic, fixing bugs, or enhancing documentation, please feel free to fork the repository, make your changes, and submit a pull request.
+```bash
+bun add --global mexc-to-cointracker-csv-converter
+```
+
+## Usage
+
+### In Node.js Projects
+
+You can import the `transformMexcToCoinTracker` function in your project to convert CSV files programmatically:
+
+```jsx
+import { transformMexcToCoinTracker } from 'mexc-to-cointracker-csv-converter';
+
+const inputFilePath = './path/to/mexc.csv';
+const outputDirectory = './path/to/output';
+
+transformMexcToCoinTracker(inputFilePath, outputDirectory)
+  .then(() => console.log('Conversion completed successfully.'))
+  .catch(error => console.error('Error:', error));
+```
+
+### As a Command-Line Tool
+
+After installing the package globally, you can directly convert CSV files from the command line:
+
+```bash
+mexc-to-cointracker <inputFilePath> <outputDirectory>
+```
+
+- `<inputFilePath>`: The path to your input CSV file from MEXC Global.
+- `<outputDirectory>`: The path to the directory where you want the converted CSV file to be saved.
+
+Example:
+
+```bash
+mexc-to-cointracker ./data/mexc_transactions.csv ./output
+```
+
+This command reads transactions from `mexc_transactions.csv`, converts them, and saves the output to the specified `./output` directory.
+
+## Contributing
+
+Contributions to improve this tool are welcome. Feel free to fork the repository, make your changes, and submit a pull request.
