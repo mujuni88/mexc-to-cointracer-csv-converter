@@ -1,6 +1,6 @@
 {
   "name": "mexc-to-cointracker-csv-converter",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -12,7 +12,7 @@
     }
   },
   "bin": {
-    "mexc-to-cointracker": "./dist/cli.js"
+    "mexc-to-cointracker": "./dist/cli.cjs"
   },
   "scripts": {
     "dev": "vite",
