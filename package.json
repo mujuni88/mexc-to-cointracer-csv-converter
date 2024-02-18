@@ -1,22 +1,23 @@
 {
   "name": "mexc-to-cointracker-csv-converter",
   "version": "2.0.3",
-  "type": "module",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js"
-    }
-  },
   "bin": {
     "mexc-to-cointracker": "./dist/cli.js"
   },
+  "keywords": [
+    "cli",
+    "npmtool",
+    "mexc",
+    "cointracker"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc",
     "preview": "vite preview",
     "prepare": "husky",
+    "patch": "npm version patch && npm publish",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {

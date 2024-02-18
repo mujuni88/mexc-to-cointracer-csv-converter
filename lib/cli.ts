@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+
 import * as fs from "fs/promises";
-import { transformMexcToCoinTracker } from "./convertMexcToCointracker";
+import { transformMexcToCoinTracker } from ".";
 
 async function main(inputFilePath: string, outputDirectory: string) {
   try {
@@ -9,6 +10,7 @@ async function main(inputFilePath: string, outputDirectory: string) {
       .access(outputDirectory)
       .then(() => true)
       .catch(() => false);
+
     if (!dirExists) {
       await fs.mkdir(outputDirectory, { recursive: true });
       console.log(`Output directory created at ${outputDirectory}`);

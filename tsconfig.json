@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "rootDir": "lib",
     "outDir": "dist",
-    "composite": true,
-    "skipLibCheck": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "strict": true,
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
-  "include": ["lib", "@types", "vite.config.ts"]
+  "include": ["lib/**/*.ts", "@types/**/*.d.ts"],
 }
