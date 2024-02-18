@@ -29,13 +29,13 @@ bun add mexc-to-cointracker-csv-converter
 To use it as a global command-line tool, install it globally:
 
 ```bash
-npm install -g mexc-to-cointracker-csv-converter
+npx mexc-to-cointracker-csv-converter <inputFilePath> <outputDirectory>
 ```
 
 Or with bun:
 
 ```bash
-bun add --global mexc-to-cointracker-csv-converter
+bunx mexc-to-cointracker-csv-converter <inputFilePath> <outputDirectory>
 ```
 
 ## Usage
@@ -45,14 +45,14 @@ bun add --global mexc-to-cointracker-csv-converter
 You can import the `transformMexcToCoinTracker` function in your project to convert CSV files programmatically:
 
 ```jsx
-import { transformMexcToCoinTracker } from 'mexc-to-cointracker-csv-converter';
+import { transformMexcToCoinTracker } from "mexc-to-cointracker-csv-converter";
 
-const inputFilePath = './path/to/mexc.csv';
-const outputDirectory = './path/to/output';
+const inputFilePath = "./path/to/mexc.csv";
+const outputDirectory = "./path/to/output";
 
 transformMexcToCoinTracker(inputFilePath, outputDirectory)
-  .then(() => console.log('Conversion completed successfully.'))
-  .catch(error => console.error('Error:', error));
+  .then(() => console.log("Conversion completed successfully."))
+  .catch((error) => console.error("Error:", error));
 ```
 
 ### As a Command-Line Tool
